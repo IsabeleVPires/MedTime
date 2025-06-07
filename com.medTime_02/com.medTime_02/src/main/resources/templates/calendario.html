@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário</title>
+    <link rel="stylesheet" href="css/calendario.css">
+    <link rel="stylesheet" href="css/sideBar.css">
+    <script src="js/calendario.js" defer></script>
+</head>
+<body>
+    <div class="sidebar">
+        <!-- Ícone de notificações com link funcional -->
+        <a href="notificacoes.html"><img src="logo/sinopng.png" alt="Notificações" class="sidebar-icon"></a>
+
+        <!-- Ícone de calendário -->
+        <a href="calendario.html"><img src="logo/calendariopng.png" alt="Calendário" class="sidebar-icon"></a>
+    </div> 
+
+    <div class="wrapper">
+        <header>
+            <p class="data-atual"></p>
+            <div class="icones">
+                <span id="anterior" class="simbolos">&lt</span>
+                <span id="proximo" class="simbolos">&gt</span>
+            </div>
+        </header>
+        <div class="calendario">
+            <ul class="semana">
+                <li>Dom</li>
+                <li>Seg</li>
+                <li>Ter</li>
+                <li>Qua</li>
+                <li>Qui</li>
+                <li>Sex</li>
+                <li>Sab</li>
+            </ul>
+            <ul class="dias">
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

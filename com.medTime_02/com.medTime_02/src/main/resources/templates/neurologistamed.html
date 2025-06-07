@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neurologia</title>
+  <link rel="stylesheet" href="css/medicos.css">
+  <link rel="stylesheet" href="css/sideBar.css">
+  <style>
+    .card_medico a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+    .card_medico a:hover {
+      cursor: pointer;
+    }
+    /* Estilo para a notificação */
+    .notificacao {
+      background-color: #ffecb3;
+      border: 1px solid #ffca28;
+      color: #795548;
+      padding: 15px 20px;
+      margin: 15px auto 30px;
+      max-width: 700px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+   <div class="sidebar">
+    <a href="notificacoes.html"><img src="logo/sinopng.png" alt="Sino" class="sidebar-icon"></a>
+    <a href="calendario.html"><img src="logo/calendariopng.png" alt="Calendário" class="sidebar-icon"></a>
+  </div> 
+  
+  <div class="container_pagina_inform">
+    <div class="cabecalho_texto">
+      <h1 class="pagina_inform_titulo">Neurologia</h1>
+      <h3 class="pagina_inform_subtitulo">Selecione um médico para visualizar as datas disponíveis de consulta.</h3>
+    </div>
+
+    <div class="medicos_lista">
+      <div class="card_medico">
+        <a href="neurologistaEduardo.html">
+          <img src="logo/eduardo.png" alt="DR. EDUARDO SILVA" class="foto_medico">
+          <h4 class="nome_medico">DR. EDUARDO SILVA</h4>
+          <p class="especialidade">Neurologia</p>
+          <p class="descricao_medico">Atua com dores de cabeça e distúrbios do sono.</p>
+        </a>
+      </div>
+
+      <div class="card_medico">
+        <a href="neurologistaCarla.html">
+          <img src="logo/carla.png" alt="DRA. CARLA MELO" class="foto_medico">
+          <h4 class="nome_medico">DRA. CARLA MELO</h4>
+          <p class="especialidade">Neurologia Pediátrica</p>
+          <p class="descricao_medico">Cuida de crianças com transtornos neurológicos.</p>
+        </a>
+      </div>
+
+      <div class="card_medico">
+        <a href="neurologistaHenrique.html">
+          <img src="logo/henrique.png" alt="DR. HENRIQUE LIMA" class="foto_medico">
+          <h4 class="nome_medico">DR. HENRIQUE LIMA</h4>
+          <p class="especialidade">Neurologia</p>
+          <p class="descricao_medico">Especialista em AVC e reabilitação neurológica.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendário</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: #9adada;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container_pagina_calendario {
+      width: 700px;
+      background-color: #eeefea;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.35);
+      padding: 40px 35px;
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      min-height: 370px;
+    }
+
+    .lado-esquerdo {
+      max-width: 220px;
+      color: #106e6d;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .lado-esquerdo h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .lado-esquerdo p.subtitulo {
+      font-size: 1.1rem;
+      color: #333;
+      font-weight: 400;
+    }
+
+    .wrapper {
+      width: 320px;
+      height: 320px;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    header.calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px 0;
+      font-size: 1.1rem;
+      color: #106e6d;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    header.calendar-header p.data-atual {
+      margin: 0;
+    }
+
+    .icones span.simbolos {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.5rem;
+      padding: 0 12px;
+      color: #289893;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    .icones span.simbolos:hover {
+      color: #106e6d;
+    }
+
+    .calendario {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      padding-bottom: 10px;
+    }
+
+    .calendario ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .calendario ul.semana {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 15px;
+      font-weight: 700;
+      color: #106e6d;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #ddd;
+      flex-shrink: 0;
+      user-select: none;
+    }
+
+    .calendario ul.semana li {
+      width: 14.28%;
+      text-align: center;
+    }
+
+    .calendario ul.dias {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 10px 15px 0 15px;
+      flex-grow: 1;
+      overflow-y: auto;
+      align-content: flex-start;
+    }
+
+    .calendario ul.dias li {
+      width: 14.28%;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      color: #106e6d;
+      font-size: 0.85rem;
+      user-select: none;
+      height: 38px;
+      line-height: 38px;
+      box-sizing: border-box;
+    }
+
+    .calendario ul.dias li.inactive {
+      color: #bbb;
+      cursor: default;
+      background: transparent;
+    }
+
+    .calendario ul.dias li.active {
+      background-color: #106e6d;
+      color: #eeefea;
+      font-weight: 700;
+      box-shadow: 0 0 8px rgba(16,110,109,0.7);
+    }
+
+    .calendario ul.dias li:not(.inactive):hover {
+      background-color: #289893;
+      color: #fff;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .container_pagina_calendario {
+        flex-direction: column;
+        width: 90%;
+        padding: 30px 20px;
+        min-height: auto;
+        gap: 25px;
+      }
+
+      .lado-esquerdo {
+        max-width: 100%;
+      }
+
+      .wrapper {
+        width: 100%;
+        height: 340px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container_pagina_calendario {
+        padding: 20px 15px;
+      }
+
+      .lado-esquerdo h1 {
+        font-size: 1.6rem;
+      }
+
+      .lado-esquerdo p.subtitulo {
+        font-size: 1rem;
+      }
+
+      header.calendar-header {
+        padding: 8px 12px 0;
+        font-size: 1rem;
+      }
+
+      .icones span.simbolos {
+        font-size: 1.3rem;
+        padding: 0 8px;
+      }
+
+      .calendario ul.semana {
+        font-size: 0.8rem;
+        padding: 6px 8px;
+      }
+
+      .calendario ul.dias li {
+        height: 32px;
+        line-height: 32px;
+        font-size: 0.75rem;
+      }
+
+      .wrapper {
+        height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container_pagina_calendario">
+    <div class="lado-esquerdo">
+      <h1>Calendário</h1>
+      <p class="subtitulo">Selecione uma data desejada</p>
+    </div>
+
+    <div class="wrapper">
+      <header class="calendar-header">
+        <p class="data-atual"></p>
+        <div class="icones">
+          <span id="anterior" class="simbolos">&lt;</span>
+          <span id="proximo" class="simbolos">&gt;</span>
+        </div>
+      </header>
+      <div class="calendario">
+        <ul class="semana">
+          <li>Dom</li><li>Seg</li><li>Ter</li><li>Qua</li><li>Qui</li><li>Sex</li><li>Sab</li>
+        </ul>
+        <ul class="dias"></ul>
+      </div>
+    </div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const dataAtualEl = document.querySelector(".data-atual");
+    const diasEl = document.querySelector(".dias");
+    const prevNextIcon = document.querySelectorAll(".icones span.simbolos");
+
+    if (!dataAtualEl || !diasEl || prevNextIcon.length !== 2) {
+        console.error("Elementos do calendário não encontrados. Verifique os seletores JS.");
+        return;
+    }
+
+    let date = new Date();
+    let currYear = date.getFullYear();
+    let currMonth = date.getMonth();
+
+    const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",
+                    "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+    const renderCalendar = () => {
+        let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(); 
+        let lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(); 
+        let lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(); 
+        let lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); 
+        let liTag = "";
+
+        for (let i = firstDayofMonth; i > 0; i--) {
+            liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+        }
+
+        for (let i = 1; i <= lastDateofMonth; i++) {
+            let isToday = i === new Date().getDate() && currMonth === new Date().getMonth() 
+                         && currYear === new Date().getFullYear() ? "active" : "";
+            liTag += `<li class="${isToday}">${i}</li>`;
+        }
+
+        let totalCellsRendered = firstDayofMonth + lastDateofMonth;
+        let cellsToAddForNextMonth = (7 - (totalCellsRendered % 7)) % 7;
+
+        let remainingCells = cellsToAddForNextMonth;
+        for (let i = 1; i <= remainingCells; i++) {
+            liTag += `<li class="inactive">${i}</li>`;
+        }
+
+        diasEl.innerHTML = liTag;
+        dataAtualEl.innerText = `${months[currMonth]} ${currYear}`;
+    };
+
+    renderCalendar();
+
+    prevNextIcon.forEach(icon => {
+        icon.addEventListener("click", () => {
+            currMonth = icon.id === "proximo" ? currMonth + 1 : currMonth - 1;
+
+            if (currMonth < 0) {
+                currMonth = 11;
+                currYear--;
+            } else if (currMonth > 11) {
+                currMonth = 0;
+                currYear++;
+            }
+
+            renderCalendar();
+        });
+    });
+});
+</script>
+
+</body>
+</html>

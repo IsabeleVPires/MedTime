@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #9adada;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_pagina_especialidades {
+  width: 900px;
+  height: auto;
+  background-color: #eeefea;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  padding: 40px;
+}
+
+.pagina_especialidades {
+  text-align: center;
+  width: 100%;
+}
+
+.pagina_especialidades_titulo,
+.pagina_especialidades_subtitulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.pagina_especialidades_titulo {
+  color: #106e6d;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.pagina_especialidades_subtitulo {
+  color: #333;
+  font-size: 18px;
+}
+
+.especialidades_opcoes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.especialidade_container {
+  width: 180px;
+  height: 220px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.especialidade_container:hover {
+  transform: scale(1.05);
+  color: #fff;
+  background-color:#106e6d;
+}
+
+.especialidade_container:hover span {
+  font-size: 25px;
+  color: #eeefea;
+  font-weight: 500;
+  text-align: center; 
+}
+
+.icone_especialidade {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.especialidade_container span {
+  font-size: 25px;
+  color: #289893;
+  font-weight: 500;
+  text-align: center; 
+}
+
+@media (max-width: 950px) {
+  .container_pagina_especialidades {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .especialidades_opcoes {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .especialidade_container {
+    width: 45%;
+    height: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .especialidade_container {
+    width: 100%;
+  }
+
+  .pagina_especialidades_titulo {
+    font-size: 24px;
+  }
+
+  .pagina_especialidades_subtitulo {
+    font-size: 16px;
+  }
+}
